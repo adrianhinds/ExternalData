@@ -1,3 +1,4 @@
+import { eventListeners } from "@popperjs/core/index.js";
 import * as Carousel from "./Carousel.js";
 import axios from "axios";
 
@@ -11,7 +12,7 @@ const progressBar = document.getElementById("progressBar");
 const getFavouritesBtn = document.getElementById("getFavouritesBtn");
 
 // Step 0: Store your API key here for reference and easy access.
-const API_KEY = "";
+const API_KEY = "live_pHMF2O6L5H7dovvCHBqm4k1igANgF0oB7qcfnwmTWoWaQNGTATZRD7mYSDlmTsAy";
 
 /**
  * 1. Create an async function "initialLoad" that does the following:
@@ -21,7 +22,19 @@ const API_KEY = "";
  *  - Each option should display text equal to the name of the breed.
  * This function should execute immediately.
  */
+ async function initialLoad(){
+  const response = await fetch("https://api.thecatapi.com/v1/breeds") 
+  const data = await response.json();
 
+  data.forEach((data) => {
+    console.log(data);
+    const option = document.createElement("option");
+    option.value = breed.id;
+    console.log(breed.id, "id");
+    option.textContent = breed.name;
+  })
+ }
+ initialLoad();
 /**
  * 2. Create an event handler for breedSelect that does the following:
  * - Retrieve information on the selected breed from the cat API using fetch().
@@ -36,7 +49,18 @@ const API_KEY = "";
  * - Each new selection should clear, re-populate, and restart the Carousel.
  * - Add a call to this function to the end of your initialLoad function above to create the initial carousel.
  */
+function EventHandler() {  
+};
+EventHandler();
 
+async function getRandomImage() {
+  url = "https://api.thecatapi.com/v1/images/search?breed"
+  let response = await fetch(url)
+  response = await response.json()
+  images.array.forEach(Image => {
+    const carouselItem = document.cre
+  });
+}
 /**
  * 3. Fork your own sandbox, creating a new one named "JavaScript Axios Lab."
  */
@@ -49,13 +73,17 @@ const API_KEY = "";
  *   by setting a default header with your API key so that you do not have to
  *   send it manually with all of your requests! You can also set a default base URL!
  */
+const response = axios.post()
 /**
  * 5. Add axios interceptors to log the time between request and response to the console.
  * - Hint: you already have access to code that does this!
  * - Add a console.log statement to indicate when requests begin.
  * - As an added challenge, try to do this on your own without referencing the lesson material.
  */
-
+axios.interceptors.request.use(request => {
+   console.log('Request sent.');
+   return request;
+});
 /**
  * 6. Next, we'll create a progress bar to indicate the request is in progress.
  * - The progressBar element has already been created for you.
@@ -71,7 +99,9 @@ const API_KEY = "";
  *   once or twice per request to this API. This is still a concept worth familiarizing yourself
  *   with for future projects.
  */
+function updateProgress(ProgressEvent) {
 
+};
 /**
  * 7. As a final element of progress indication, add the following to your axios interceptors:
  * - In your request interceptor, set the body element's cursor style to "progress."
@@ -101,7 +131,12 @@ export async function favourite(imgId) {
  *    If that isn't in its own function, maybe it should be so you don't have to
  *    repeat yourself in this section.
  */
+getFavourites() {
 
+}
+getFavourites.addEventListener("click")
+getFavouritesBtn {
+}
 /**
  * 10. Test your site, thoroughly!
  * - What happens when you try to load the Malayan breed?
